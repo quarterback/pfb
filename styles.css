@@ -308,6 +308,20 @@ main,
   letter-spacing: -0.01em;
   color: var(--ink);
 }
+.footer__contact {
+  margin-top: 1.25rem;
+  font-size: clamp(1.05rem, 2vw, 1.35rem);
+  font-weight: 500;
+  color: var(--ink-soft);
+}
+.footer__email {
+  font-weight: 700;
+  color: var(--violet-text);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+.footer__email:hover { color: #cc1f74; } /* deeper magenta — keeps AA on cream */
+
 .footer__meta {
   margin-top: 1.5rem;
   display: flex;
