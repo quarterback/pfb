@@ -8,7 +8,7 @@ Static HTML + CSS. No build step. Open `index.html` or serve the folder.
 ## Fonts
 - **Wordmark:** [Pally](https://www.fontshare.com/fonts/pally) (Fontshare),
   self-hosted as a variable `.woff2` in `fonts/`.
-- **Headings & body:** [Satoshi](https://www.fontshare.com/fonts/satoshi)
+- **Headings & body:** [Cabinet Grotesk](https://www.fontshare.com/fonts/cabinet-grotesk)
   (Fontshare), loaded from the Fontshare CDN.
 
 ## Accessibility
