@@ -23,6 +23,7 @@ Built to WCAG 2.1 AA:
 index.html         # markup + copy
 styles.css         # design tokens, color system, layout
 og-image.png       # 1200x630 social card
-favicon.*          # favicon set (#FFB258 background, "PF" monogram)
+futures-icon.svg   # donut mark (source for the favicons)
+favicon.*          # favicon set generated from futures-icon.svg
 apple-touch-icon.png
 ```
