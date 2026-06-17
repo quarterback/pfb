@@ -6,8 +6,8 @@ laboratory focused on expanding what Portland imagines is possible.
 Static HTML + CSS. No build step. Open `index.html` or serve the folder.
 
 ## Fonts
-- **Wordmark:** [Pally](https://www.fontshare.com/fonts/pally) (Fontshare),
-  self-hosted as a variable `.woff2` in `fonts/`.
+- **Wordmark only:** [Kola](https://www.fontshare.com/fonts/kola) (Fontshare),
+  loaded from the Fontshare CDN. Used solely for the "PDX Futures" wordmark.
 - **Headings & body:** [Cabinet Grotesk](https://www.fontshare.com/fonts/cabinet-grotesk)
   (Fontshare), loaded from the Fontshare CDN.
 
@@ -20,7 +20,9 @@ Built to WCAG 2.1 AA:
 
 ## Structure
 ```
-index.html        # markup + copy
-styles.css        # design tokens, color system, layout
-fonts/            # Pally variable woff2 (wordmark)
+index.html         # markup + copy
+styles.css         # design tokens, color system, layout
+og-image.png       # 1200x630 social card
+favicon.*          # favicon set (#FFB258 background, "PF" monogram)
+apple-touch-icon.png
 ```
