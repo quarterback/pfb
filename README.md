@@ -23,7 +23,8 @@ Built to WCAG 2.1 AA:
 index.html         # markup + copy
 styles.css         # design tokens, color system, layout
 og-image.png       # 1200x630 social card
-futures-icon.svg   # donut mark (source for the favicons)
-favicon.*          # favicon set generated from futures-icon.svg
+alt-blac-logo.svg  # black donut mark (source for the favicons)
+futures-icon.svg   # orange donut mark (alternate)
+favicon.*          # favicon set generated from alt-blac-logo.svg
 apple-touch-icon.png
 ```
