@@ -131,18 +131,9 @@ main,
   line-height: 1.02;
   letter-spacing: -0.01em;
   text-decoration: none;
-  /* The bright bit: a sunrise gradient locked to the letterforms.
-     A solid fallback color sits underneath for any browser that can't
-     paint the gradient, so the mark is never invisible. */
   color: var(--ink);
-  background: linear-gradient(105deg, var(--coral) 0%, var(--magenta) 38%, var(--violet) 72%, var(--teal) 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
 }
-@supports ((-webkit-background-clip: text) or (background-clip: text)) {
-  .wordmark { color: transparent; }
-}
-.wordmark:hover { filter: saturate(1.1) brightness(1.03); }
+.wordmark:hover { opacity: 0.85; }
 
 /* ----- Hero -------------------------------------------------------------- */
 .hero { padding-block: clamp(2.5rem, 8vw, 5.5rem); }
@@ -225,14 +216,6 @@ main,
 .site-footer {
   padding-block: 0 clamp(2rem, 5vw, 3.5rem);
 }
-.footer__more {
-  font-family: var(--font-body);
-  font-weight: 900;
-  font-size: clamp(1.8rem, 6vw, 3.5rem);
-  line-height: 1;
-  letter-spacing: -0.02em;
-  color: var(--ink);
-}
 .footer__contact {
   margin-top: 1.25rem;
   font-size: clamp(1.05rem, 2vw, 1.35rem);
@@ -267,7 +250,6 @@ main,
 
 /* ----- High-contrast / forced-colors safety net -------------------------- */
 @media (forced-colors: active) {
-  .wordmark,
-  .footer__more { color: CanvasText; -webkit-text-fill-color: CanvasText; }
+  .wordmark { color: CanvasText; -webkit-text-fill-color: CanvasText; }
   .hl::before { background: Highlight; }
 }
