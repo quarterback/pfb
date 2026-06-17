@@ -7,16 +7,6 @@
    is carried by backgrounds, shapes and highlights — never the only signal.
    ========================================================================= */
 
-/* ----- Pally variable font (the wordmark) -------------------------------- */
-@font-face {
-  font-family: "Pally";
-  src: url("fonts/PallyVariable.woff2") format("woff2-variations"),
-       url("fonts/PallyVariable.woff2") format("woff2");
-  font-weight: 300 700;
-  font-style: normal;
-  font-display: swap;
-}
-
 /* ----- Design tokens ----------------------------------------------------- */
 :root {
   /* Surfaces */
@@ -44,7 +34,7 @@
   --radius: 1.25rem;
 
   --font-body: "Cabinet Grotesk", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  --font-mark: "Pally", "Cabinet Grotesk", system-ui, sans-serif;
+  --font-mark: "Kola", "Cabinet Grotesk", system-ui, sans-serif;
 }
 
 /* ----- Reset / base ------------------------------------------------------ */
@@ -103,19 +93,17 @@ strong { font-weight: 900; }
 }
 .blob {
   position: absolute;
-  width: 42vmax;
-  height: 42vmax;
+  width: 46vmax;
+  height: 46vmax;
   border-radius: 50%;
-  filter: blur(60px);
-  opacity: 0.42;
+  filter: blur(90px);
+  opacity: 0.2;
   will-change: transform;
-  animation: drift 26s ease-in-out infinite alternate;
+  animation: drift 32s ease-in-out infinite alternate;
 }
-.blob--marigold { background: var(--marigold); top: -14vmax; left: -8vmax; animation-delay: 0s; }
-.blob--coral    { background: var(--coral);    top: -6vmax;  right: -12vmax; animation-delay: -6s; }
-.blob--magenta  { background: var(--magenta);  bottom: 8vmax; left: 6vmax;   animation-delay: -12s; opacity: 0.3; }
-.blob--teal     { background: var(--teal);     bottom: -16vmax; right: 4vmax; animation-delay: -3s; }
-.blob--violet   { background: var(--violet);   top: 38vmax; left: 36vmax;    animation-delay: -9s; opacity: 0.28; }
+.blob--marigold { background: var(--marigold); top: -18vmax; left: -10vmax; animation-delay: 0s; }
+.blob--coral    { background: var(--coral);    top: -10vmax; right: -16vmax; animation-delay: -8s; opacity: 0.16; }
+.blob--teal     { background: var(--teal);     bottom: -20vmax; right: 2vmax; animation-delay: -4s; opacity: 0.18; }
 
 @keyframes drift {
   from { transform: translate3d(0, 0, 0) scale(1); }
@@ -135,55 +123,17 @@ main,
 /* ----- Header / wordmark ------------------------------------------------- */
 .site-header { padding-top: clamp(2rem, 6vw, 4rem); }
 
-.eyebrow {
-  font-size: clamp(0.8rem, 1.4vw, 0.95rem);
-  font-weight: 700;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--ink-soft);
-  margin-bottom: 1rem;
-}
-
 .wordmark {
   display: inline-block;
   font-family: var(--font-mark);
-  font-weight: 600;
-  font-size: clamp(3rem, 12vw, 8.5rem);
-  line-height: 0.92;
+  font-weight: 400; /* Kola ships a single heavy weight — avoid faux bold */
+  font-size: clamp(2.2rem, 6.5vw, 4.25rem);
+  line-height: 1.02;
   letter-spacing: -0.01em;
   text-decoration: none;
-  /* The bright bit: a sunrise gradient locked to the letterforms.
-     A solid fallback color sits underneath for any browser that can't
-     paint the gradient, so the mark is never invisible. */
   color: var(--ink);
-  background: linear-gradient(105deg, var(--coral) 0%, var(--magenta) 38%, var(--violet) 72%, var(--teal) 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
 }
-@supports ((-webkit-background-clip: text) or (background-clip: text)) {
-  .wordmark { color: transparent; }
-}
-.wordmark:hover { filter: saturate(1.1) brightness(1.03); }
-
-/* ----- Hero -------------------------------------------------------------- */
-.hero { padding-block: clamp(2.5rem, 8vw, 5.5rem); }
-
-.hero__heading {
-  font-weight: 900;
-  font-size: clamp(2.4rem, 7.5vw, 5.25rem);
-  line-height: 1.02;
-  letter-spacing: -0.025em;
-  max-width: 18ch;
-}
-
-.hero__lede {
-  margin-top: 1.75rem;
-  font-size: clamp(1.15rem, 2.6vw, 1.7rem);
-  font-weight: 500;
-  line-height: 1.45;
-  color: var(--ink-soft);
-  max-width: 34ch;
-}
+.wordmark:hover { opacity: 0.85; }
 
 /* Highlighter mark behind key words — dark ink stays on a bright wash,
    so the contrast is preserved while the color does the talking. */
@@ -205,108 +155,37 @@ main,
 .hl--marigold::before { background: var(--marigold); }
 .hl--coral::before    { background: #ffd2a8; } /* lighter coral wash keeps dark text AA */
 
-/* ----- Statement (inverted deep panel) ----------------------------------- */
+/* ----- Statement --------------------------------------------------------- */
 .statement {
-  margin-block: clamp(2rem, 6vw, 4rem);
-  padding: clamp(2.25rem, 6vw, 4.5rem);
-  border-radius: var(--radius);
-  color: var(--cream);
-  background:
-    radial-gradient(120% 140% at 0% 0%, rgba(91, 61, 245, 0.55), transparent 55%),
-    radial-gradient(120% 140% at 100% 100%, rgba(255, 46, 147, 0.45), transparent 55%),
-    linear-gradient(160deg, var(--deep), var(--deep-2));
-  box-shadow: 0 30px 70px -40px rgba(22, 12, 51, 0.7);
+  padding-block: clamp(3rem, 9vw, 6rem);
 }
 
 .statement__line {
   font-weight: 900;
-  font-size: clamp(1.9rem, 5vw, 3.4rem);
+  font-size: clamp(2.1rem, 5.6vw, 3.8rem);
   line-height: 1.08;
-  letter-spacing: -0.02em;
-  max-width: 20ch;
-}
-
-/* keyword chips inside the deep panel — bright text clears AA on dark */
-.kw { color: var(--marigold); }
-.kw:nth-of-type(2) { color: var(--teal); }
-.kw:nth-of-type(3) { color: #ff8fbf; }
-.kw:nth-of-type(4) { color: #b9a6ff; }
-
-.statement__question {
-  margin-top: 1.75rem;
-  font-size: clamp(1.1rem, 2.6vw, 1.6rem);
-  font-weight: 500;
-  line-height: 1.5;
-  color: #efe7ff; /* ~12:1 on the deep field */
-  max-width: 40ch;
-}
-.statement__question .hl--coral { color: var(--ink); }
-
-/* ----- About ------------------------------------------------------------- */
-.about {
-  padding-block: clamp(2.5rem, 7vw, 5rem);
-  display: grid;
-  gap: clamp(1.5rem, 4vw, 2.5rem);
-}
-
-.about__title {
-  font-weight: 900;
-  font-size: clamp(1.6rem, 4vw, 2.6rem);
-  line-height: 1.12;
   letter-spacing: -0.02em;
   max-width: 22ch;
 }
 
-.about__body {
-  display: grid;
-  gap: 1.15rem;
-  max-width: 60ch;
-  font-size: clamp(1.02rem, 1.8vw, 1.2rem);
+/* keyword accents — large display text, each color clears AA on cream */
+.kw { color: #d2451e; }            /* imagine — warm orange-red */
+.kw:nth-of-type(2) { color: #0a7d6b; }  /* build  — deep teal   */
+.kw:nth-of-type(3) { color: #cc1f74; }  /* fund   — deep magenta */
+.kw:nth-of-type(4) { color: var(--violet-text); } /* support — violet */
+
+.statement__question {
+  margin-top: 1.75rem;
+  font-size: clamp(1.15rem, 2.6vw, 1.7rem);
+  font-weight: 500;
+  line-height: 1.5;
   color: var(--ink-soft);
+  max-width: 40ch;
 }
-
-.about__pull {
-  font-weight: 700;
-  color: var(--ink);
-  border-left: 4px solid var(--coral);
-  padding-left: 1.1rem;
-}
-
-/* ----- Tag pills --------------------------------------------------------- */
-.tags {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.7rem;
-}
-.tag {
-  font-weight: 700;
-  font-size: 0.95rem;
-  padding: 0.5rem 1rem;
-  border-radius: 999px;
-  background: var(--cream-deep);
-  border: 2px solid rgba(28, 19, 48, 0.12);
-  color: var(--ink);
-}
-.tag:nth-child(1) { border-color: var(--coral); }
-.tag:nth-child(2) { border-color: var(--marigold); }
-.tag:nth-child(3) { border-color: var(--teal); }
-.tag:nth-child(4) { border-color: var(--magenta); }
-.tag:nth-child(5) { border-color: var(--violet); }
 
 /* ----- Footer ------------------------------------------------------------ */
 .site-footer {
-  padding-block: clamp(3rem, 9vw, 6rem) clamp(2rem, 5vw, 3.5rem);
-}
-.footer__more {
-  font-family: var(--font-mark);
-  font-weight: 600;
-  font-size: clamp(1.8rem, 6vw, 3.5rem);
-  line-height: 1;
-  letter-spacing: -0.01em;
-  color: var(--ink);
+  padding-block: 0 clamp(2rem, 5vw, 3.5rem);
 }
 .footer__contact {
   margin-top: 1.25rem;
@@ -342,8 +221,6 @@ main,
 
 /* ----- High-contrast / forced-colors safety net -------------------------- */
 @media (forced-colors: active) {
-  .wordmark,
-  .footer__more { color: CanvasText; -webkit-text-fill-color: CanvasText; }
+  .wordmark { color: CanvasText; -webkit-text-fill-color: CanvasText; }
   .hl::before { background: Highlight; }
-  .tag { border-color: CanvasText; }
 }
